@@ -13,15 +13,18 @@ function App() {
 
   return (
     <div>
-      <h1>Markdown Previewer</h1>
+      <div className="for-editor container-fluid border border-dark shadow-lg p-3 mb-5 bg-white rounded">
+      <nav><h4>Editor</h4></nav>
       <textarea
         name="text"
         id="editor"
+        className="editor"
         cols="50"
         rows="10"
         value={text}
         onChange={editing}
       ></textarea>
+      </div>
       <Preview markdown={text} />
     </div>
   );
@@ -29,13 +32,16 @@ function App() {
 
 function Preview(props) {
   return (
+    <div className="for-previewer container border border-dark shadow-lg p-3 mb-5 bg-white rounded">
+    <nav><h4>Previewer</h4></nav>
     <div
       dangerouslySetInnerHTML={{
         __html: marked(props.markdown, { renderer: markedRenderer }),
       }}
       id="preview"
-      className="preview"
+      className="container-fluid"
     />
+    </div>
   );
 }
 
